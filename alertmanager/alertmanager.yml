@@ -1,0 +1,17 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname', 'severity']
+
+receivers:
+  - name: 'email-notifications'
+    email_configs:
+      - to: '<YOUR_EMAIL_ADDRESS>'
+
+  # Add additional receiver configurations for other notification methods if needed
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['localhost:9093']
